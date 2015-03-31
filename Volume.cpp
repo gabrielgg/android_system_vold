@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+#define _STLP_INTERNAL_CMATH // OL circumvent build error due to c++ header
+
+#if  (__POSIX_VISIBLE < 200809) // OL: not sure, why this is the case for me
+#define USE_MY_POPEN
+#endif
+
+#include <stdio.h>
+
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
@@ -55,6 +63,11 @@
 #include "Process.h"
 #include "cryptfs.h"
 #include "VoldUtil.h"
+
+
+#ifdef USE_MY_POPEN
+#include "popen.c"
+#endif
 
 extern "C" void dos_partition_dec(void const *pp, struct dos_partition *d);
 extern "C" void dos_partition_enc(void *pp, struct dos_partition *d);

@@ -53,6 +53,7 @@ common_c_includes := \
 	external/openssl/include \
 	external/stlport/stlport \
 	bionic \
+	bionic/libc/upstream-netbsd \
 	external/scrypt/lib/crypto \
 	external/e2fsprogs/lib \
 	system/core/fs_mgr/include \
